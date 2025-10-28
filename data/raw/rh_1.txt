@@ -1,0 +1,50 @@
+# ========== rh_1.txt ==========
+Politique de Congés Payés
+
+Droits aux Congés
+
+Congés Annuels
+Chaque salarié bénéficie de 25 jours ouvrés de congés payés par an (5 semaines), acquis au prorata du temps de travail effectif.
+
+Période de Référence
+Du 1er juin de l'année N au 31 mai de l'année N+1.
+
+Acquisition des Droits
+- 2,08 jours par mois travaillé
+- Droits complets après 12 mois d'ancienneté
+- Proratisation pour temps partiel
+
+Procédure de Demande
+
+1. Délai de Prévenance
+- Congés de moins de 5 jours: 1 semaine à l'avance
+- Congés de 5 jours et plus: 1 mois à l'avance
+- Congés d'été: demande avant le 31 mars
+
+2. Validation
+Les demandes sont soumises via l'outil RH Connect et validées par le manager dans un délai de 5 jours ouvrés.
+
+3. Ordre de Priorité
+En cas de conflits, l'ordre de priorité est:
+- Situation familiale (garde d'enfants)
+- Ancienneté dans l'entreprise
+- Date de la demande
+
+Congés Spéciaux
+
+Congés pour Événements Familiaux
+- Mariage: 4 jours
+- Naissance/adoption: 3 jours
+- Décès conjoint/enfant: 5 jours
+- Décès parent: 3 jours
+- Déménagement: 1 jour
+
+Congés sans Solde
+Possibilité de prendre jusqu'à 10 jours de congés sans solde par an, sous réserve de l'accord du manager et de la direction RH.
+
+Report et Perte de Droits
+Les jours non pris doivent être consommés avant le 31 mai. Un report exceptionnel de 5 jours maximum peut être accordé avec accord écrit.
+
+Contact
+Service RH: rh@entreprise.com
+Hotline: 01 23 45 67 89

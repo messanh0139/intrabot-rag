@@ -1,0 +1,89 @@
+# ========== general_1.txt ==========
+Charte Informatique de l'Entreprise
+
+Préambule
+Cette charte définit les règles d'utilisation des ressources informatiques et du réseau de l'entreprise. Elle s'applique à tous les collaborateurs, intérimaires, stagiaires et prestataires.
+
+Utilisation du Matériel
+
+Poste de Travail
+- Le matériel informatique est la propriété de l'entreprise
+- Usage principalement professionnel
+- Usage personnel toléré de façon raisonnable et non intensive
+- Interdiction de modifier la configuration sans accord du service IT
+
+Ordinateur Portable
+- Responsabilité du collaborateur en cas de vol ou dégradation
+- Obligation de verrouillage automatique après 5 minutes d'inactivité
+- Sauvegarde régulière sur le cloud d'entreprise (OneDrive)
+
+Téléphone Mobile Professionnel
+- Forfait de 30 Go de data par mois
+- Dépassement à la charge du collaborateur
+- Respect de la vie privée: pas d'appels professionnels après 19h sauf urgence
+
+Sécurité Informatique
+
+Mots de Passe
+- Minimum 12 caractères avec majuscules, minuscules, chiffres et caractères spéciaux
+- Changement obligatoire tous les 90 jours
+- Interdiction de noter ou partager ses mots de passe
+- Utilisation du gestionnaire de mots de passe d'entreprise (1Password)
+
+Authentification Multi-Facteurs
+Obligatoire pour accéder:
+- Messagerie email
+- VPN entreprise
+- Applications métiers sensibles
+
+Gestion des Données
+
+Confidentialité
+- Classification des données: Public, Interne, Confidentiel, Secret
+- Chiffrement obligatoire pour les données "Confidentiel" et "Secret"
+- Interdiction de stocker des données sur supports personnels
+
+Messagerie Électronique
+- Adresse professionnelle uniquement pour usage professionnel
+- Taille maximale des pièces jointes: 25 Mo
+- Conservation des emails importants dans des dossiers dédiés
+- Nettoyage régulier de la boîte de réception
+
+Navigation Internet
+
+Sites Autorisés
+- Accès libre aux sites nécessaires à l'activité professionnelle
+- Usage raisonnable pour consultation personnelle
+
+Sites Bloqués
+- Contenus illégaux, violents ou pornographiques
+- Sites de téléchargement illégal
+- Jeux en ligne et réseaux sociaux (sauf usage professionnel justifié)
+
+Télétravail
+
+Connexion VPN
+Obligatoire pour accéder au réseau d'entreprise depuis l'extérieur.
+
+Sécurité du Domicile
+- Réseau WiFi sécurisé (WPA2 minimum)
+- Environnement de travail isolé si possible
+- Confidentialité des échanges garantie
+
+Sanctions
+
+En cas de Non-Respect
+- 1ère infraction: Avertissement écrit
+- 2ème infraction: Mise à pied
+- 3ème infraction: Licenciement pour faute grave
+
+Infractions Graves Immédiates
+- Piratage ou tentative de piratage
+- Diffusion de virus ou malware
+- Vol de données
+- Usurpation d'identité
+
+Contact
+Service IT: it-support@entreprise.com
+Responsable Sécurité: rssi@entreprise.com
+Urgences: +33 1 23 45 67 90

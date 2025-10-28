@@ -1,0 +1,32 @@
+# ========== technique_1.txt ==========
+Guide d'Architecture Microservices
+
+Introduction
+L'architecture microservices est une approche de développement logiciel qui structure une application comme un ensemble de services faiblement couplés.
+
+Principes Fondamentaux
+1. Décomposition par Domaine Métier
+Chaque microservice correspond à une capacité métier spécifique et possède sa propre base de données.
+
+2. Communication Inter-Services
+Les microservices communiquent via des API REST, des messages asynchrones (RabbitMQ, Kafka) ou gRPC.
+
+3. Déploiement Indépendant
+Chaque service peut être déployé, mis à jour et scalé indépendamment sans affecter les autres.
+
+Technologies Recommandées
+- Conteneurisation: Docker, Kubernetes
+- API Gateway: Kong, AWS API Gateway
+- Service Mesh: Istio, Linkerd
+- Monitoring: Prometheus, Grafana, ELK Stack
+
+Avantages
+- Scalabilité granulaire
+- Résilience et tolérance aux pannes
+- Flexibilité technologique
+- Déploiement continu facilité
+
+Défis
+- Complexité opérationnelle accrue
+- Gestion des transactions distribuées
+- Surveillance et debugging plus complexes

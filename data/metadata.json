@@ -1,0 +1,34 @@
+{
+  "documents": [
+    {
+      "filename": "technique_1.txt",
+      "title": "Guide d'Architecture Microservices",
+      "profils_autorises": ["Technique", "Manager"],
+      "description": "Documentation technique sur l'architecture microservices"
+    },
+    {
+      "filename": "technique_2.txt",
+      "title": "Procédure de Déploiement CI/CD",
+      "profils_autorises": ["Technique"],
+      "description": "Guide de déploiement avec Jenkins et Kubernetes"
+    },
+    {
+      "filename": "rh_1.txt",
+      "title": "Politique de Congés Payés",
+      "profils_autorises": ["RH", "Manager"],
+      "description": "Règles et procédures concernant les congés"
+    },
+    {
+      "filename": "rh_2.txt",
+      "title": "Guide d'Entretien Annuel",
+      "profils_autorises": ["RH", "Manager"],
+      "description": "Processus d'évaluation des performances"
+    },
+    {
+      "filename": "general_1.txt",
+      "title": "Charte Informatique de l'Entreprise",
+      "profils_autorises": ["Technique", "RH", "Manager", "General"],
+      "description": "Règles d'utilisation des ressources informatiques"
+    }
+  ]
+}

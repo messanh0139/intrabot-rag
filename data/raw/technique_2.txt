@@ -1,0 +1,49 @@
+# ========== technique_2.txt ==========
+Procédure de Déploiement CI/CD avec Jenkins et Kubernetes
+
+Vue d'Ensemble
+Cette procédure décrit le pipeline de déploiement continu de nos applications vers les clusters Kubernetes de production.
+
+Prérequis
+- Accès à Jenkins: https://jenkins.entreprise.com
+- Credentials Kubernetes configurés
+- Docker Registry accessible
+- Tests unitaires et d'intégration passants
+
+Pipeline de Déploiement
+
+Étape 1: Commit et Déclenchement
+Le développeur pousse son code sur la branche develop ou main. Un webhook GitHub déclenche automatiquement le pipeline Jenkins.
+
+Étape 2: Build et Tests
+- Compilation du code source
+- Exécution des tests unitaires (coverage minimum: 80%)
+- Analyse de code statique avec SonarQube
+- Scan de sécurité avec Trivy
+
+Étape 3: Création de l'Image Docker
+```bash
+docker build -t registry.entreprise.com/app:${BUILD_NUMBER} .
+docker push registry.entreprise.com/app:${BUILD_NUMBER}
+```
+
+Étape 4: Tests d'Intégration
+Déploiement sur environnement de staging et exécution des tests d'intégration automatisés.
+
+Étape 5: Déploiement Kubernetes
+```bash
+kubectl set image deployment/app-deployment app=registry.entreprise.com/app:${BUILD_NUMBER}
+kubectl rollout status deployment/app-deployment
+```
+
+Étape 6: Smoke Tests
+Vérification des endpoints critiques et healthchecks.
+
+Rollback en Cas d'Échec
+```bash
+kubectl rollout undo deployment/app-deployment
+```
+
+Contacts
+Support DevOps: devops@entreprise.com
+Incidents: incidents@entreprise.com
