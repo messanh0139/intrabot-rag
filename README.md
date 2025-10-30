@@ -1,18 +1,8 @@
-# 🤖 IntraBot - Agent Conversationnel RAG Sécurisé
+# IntraBot - Agent Conversationnel RAG Sécurisé
 
 Agent conversationnel intelligent basé sur l'architecture RAG (Retrieval-Augmented Generation) avec filtrage de contenu par profil utilisateur.
 
-## 📋 Table des Matières
-
-- [Présentation](#présentation)
-- [Architecture](#architecture)
-- [Fonctionnalités](#fonctionnalités)
-- [Installation](#installation)
-- [Utilisation](#utilisation)
-- [Déploiement](#déploiement)
-- [Structure du Projet](#structure-du-projet)
-
-## 🎯 Présentation
+## Présentation
 
 IntraBot est un assistant conversationnel qui répond aux questions des utilisateurs en se basant sur une documentation interne, avec une contrainte de sécurité importante : **l'accès aux documents est filtré selon le profil de l'utilisateur**.
 
@@ -23,7 +13,7 @@ IntraBot est un assistant conversationnel qui répond aux questions des utilisat
 - **Profil Manager** : Accès mixte (technique + RH)
 - **Profil General** : Accès aux documents généraux uniquement
 
-## 🏗️ Architecture
+## Architecture
 
 ### Stack Technique
 
@@ -54,7 +44,7 @@ IntraBot est un assistant conversationnel qui répond aux questions des utilisat
 │      Moteur RAG (rag_engine.py)      │
 │  ┌────────────────────────────────┐  │
 │  │ 1. Recherche Vectorielle       │  │
-│  │ 2. Filtrage par Profil  🔒     │  │
+│  │ 2. Filtrage par Profil         │  │
 │  │ 3. Génération avec LLM         │  │
 │  └────────────────────────────────┘  │
 └──────┬─────────────────┬─────────────┘
@@ -77,7 +67,7 @@ IntraBot est un assistant conversationnel qui répond aux questions des utilisat
 
 2. **Récupération** (rag_engine.py)
    - Recherche de similarité vectorielle
-   - **Filtrage strict par profil utilisateur** 🔒
+   - **Filtrage strict par profil utilisateur** 
    - Sélection des top-k documents pertinents
 
 3. **Génération** (rag_engine.py)
@@ -85,24 +75,24 @@ IntraBot est un assistant conversationnel qui répond aux questions des utilisat
    - Génération de la réponse avec Mistral Large
    - Attribution des sources
 
-## ✨ Fonctionnalités
+##  Fonctionnalités
 
 ### Fonctionnalités Principales
 
-- ✅ **Réponses contextuelles** basées sur la documentation interne
-- ✅ **Filtrage sécurisé** par profil utilisateur
-- ✅ **Attribution des sources** pour chaque réponse
-- ✅ **Interface intuitive** avec historique de conversation
-- ✅ **Support multi-formats** (TXT, PDF, DOCX)
+-  **Réponses contextuelles** basées sur la documentation interne
+-  **Filtrage sécurisé** par profil utilisateur
+-  **Attribution des sources** pour chaque réponse
+-  **Interface intuitive** avec historique de conversation
+-  **Support multi-formats** (TXT, PDF, DOCX)
 
 ### Sécurité
 
-- 🔒 Chaque document est associé à des profils autorisés
-- 🔒 Filtrage au niveau de la récupération vectorielle
-- 🔒 Aucune fuite d'information inter-profils
-- 🔒 Métadonnées de profil non visibles par l'utilisateur
+-  Chaque document est associé à des profils autorisés
+-  Filtrage au niveau de la récupération vectorielle
+-  Aucune fuite d'information inter-profils
+-  Métadonnées de profil non visibles par l'utilisateur
 
-## 🚀 Installation
+##  Installation
 
 ### Prérequis
 
@@ -123,4 +113,14 @@ cd intrabot
 python -m venv venv
 source venv/bin/activate  # Linux/Mac
 # ou
-venv\Scripts\activate  # Windows
+venv\Scripts\activate  # Windows 
+```
+
+3. **Configurer la clé API** 
+Tout d'abord il faut créer un fichier .env.example contenant la configuration de Mistral API et la configuration d'application 
+et ensuite faire faire la configuration de la clé API en tapant dans le terminal ces commandes
+
+```bash 
+cp .env.example .env
+echo "MISTRAL_API_KEY=votre_clé_ici" > .env 
+```
