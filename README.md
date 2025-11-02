@@ -140,5 +140,5 @@ Pour afficher l'intrabot avec Docker.
 Voici le lien de l'application avec Docker, URL: http://0.0.0.0:8501
 
 ### Déploiement 
-Le déploiement à été fait sur le cloud de Streamlit et voici le lien 
+Le déploiement sur le cloud de Streamlit et voici le lien 
 https://intrabot-rag-422jdqhxyubudqhncpprro.streamlit.app/
