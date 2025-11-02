@@ -125,22 +125,22 @@ class DataIngestion:
         Returns:
             Instance de la base vectorielle Chroma ou None si annulation
         """
-        print("🚀 Début de l'ingestion des documents...")
+        print("Début de l'ingestion des documents...")
         
         all_chunks = []
         
         # Traiter chaque document référencé dans les métadonnées
         for filename in self.metadata_map.keys():
-            print(f"📄 Traitement de {filename}...")
+            print(f"Traitement de {filename}...")
             chunks = self.process_document(filename)
             all_chunks.extend(chunks)
             print(f"   ✓ {len(chunks)} chunks créés")
         
-        print(f"\n📊 Total: {len(all_chunks)} chunks à indexer")
+        print(f"\nTotal: {len(all_chunks)} chunks à indexer")
         
         # Si aucun chunk, tenter d'aider : créer des fichiers de test pour les fichiers manquants
         if not all_chunks:
-            print("⚠️ Aucun chunk trouvé ! Vérifie que tes fichiers dans data/documents/ ne sont pas vides.")
+            print("Aucun chunk trouvé ! Vérifie que tes fichiers dans data/documents/ ne sont pas vides.")
             
             # Identifier les fichiers mentionnés dans les métadonnées mais absents sur le disque
             missing_files = []
@@ -150,17 +150,17 @@ class DataIngestion:
                     missing_files.append(filename)
             
             if missing_files:
-                print(f"ℹ️ Fichiers manquants détectés ({len(missing_files)}). Création automatique de fichiers de test dans '{Config.DATA_DIR}'...")
+                print(f"Fichiers manquants détectés ({len(missing_files)}). Création automatique de fichiers de test dans '{Config.DATA_DIR}'...")
                 os.makedirs(Config.DATA_DIR, exist_ok=True)
                 
                 for filename in missing_files:
                     filepath = os.path.join(Config.DATA_DIR, filename)
                     meta = self.metadata_map.get(filename, {})
-                    sample_text = (
-                        f"{meta.get('title', filename)}\n\n"
-                        f"{meta.get('description', 'Document de test généré automatiquement pour l\'ingestion.')}\n\n"
-                        "Contenu d'exemple : ceci est un texte de test pour alimenter le pipeline d'indexation."
-                    )
+                    # CORRECTION: Utiliser une variable intermédiaire pour les retours à la ligne
+                    title = meta.get('title', filename)
+                    description = meta.get('description', "Document de test généré automatiquement pour l'ingestion.")
+                    sample_text = f"{title}\n\n{description}\n\nContenu d'exemple : ceci est un texte de test pour alimenter le pipeline d'indexation."
+                    
                     try:
                         with open(filepath, "w", encoding="utf-8") as f:
                             f.write(sample_text)
@@ -170,24 +170,24 @@ class DataIngestion:
                 
                 # Retenter le traitement pour les fichiers créés
                 for filename in missing_files:
-                    print(f"📄 Re-traitement de {filename} après création...")
+                    print(f"Re-traitement de {filename} après création...")
                     chunks = self.process_document(filename)
                     all_chunks.extend(chunks)
                     print(f"   ✓ {len(chunks)} chunks créés")
             else:
-                print("ℹ️ Aucun fichier manquant trouvé sur le disque — vérifie le contenu des fichiers existants (non vides).")
+                print("Aucun fichier manquant trouvé sur le disque — vérifie le contenu des fichiers existants (non vides).")
             
             # Vérification finale
             if not all_chunks:
-                print("🚫 Toujours aucun chunk après tentative automatique. Ingestion annulée.")
-                print("👉 Actions recommandées :")
+                print("Toujours aucun chunk après tentative automatique. Ingestion annulée.")
+                print("Actions recommandées :")
                 print("   - Vérifier que Config.DATA_DIR pointe vers le bon dossier.")
                 print("   - Vérifier que les fichiers listés dans Config.METADATA_FILE existent et contiennent du texte.")
                 print("   - Lancer une exécution de test avec un petit fichier txt dans le dossier.")
                 return None
         
         # Créer la base vectorielle ChromaDB
-        print("🔍 Création des embeddings et indexation dans ChromaDB...")
+        print("Création des embeddings et indexation dans ChromaDB...")
         vectorstore = Chroma.from_documents(
             documents=all_chunks,
             embedding=self.embeddings,
@@ -195,7 +195,7 @@ class DataIngestion:
             collection_name="intrabot_docs"
         )
 
-        print("✅ Ingestion terminée avec succès!")
+        print("Ingestion terminée avec succès!")
         return vectorstore
 
     
@@ -225,7 +225,7 @@ def main():
     vectorstore = ingestion.ingest_all_documents()
     
     # Test de recherche
-    print("\n🧪 Test de recherche...")
+    print("\nTest de recherche...")
     results = vectorstore.similarity_search("microservices", k=2)
     for i, doc in enumerate(results, 1):
         print(f"\nRésultat {i}:")

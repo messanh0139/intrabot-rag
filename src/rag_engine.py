@@ -13,7 +13,7 @@ from src.data_ingestion import DataIngestion
 
 class RAGEngine:
     """Moteur RAG avec sécurité par profil"""
-
+    
     def __init__(self):
         """Initialise le moteur RAG"""
         Config.validate()
@@ -36,11 +36,14 @@ class RAGEngine:
 Ta mission est de répondre aux questions des utilisateurs en te basant UNIQUEMENT sur les documents fournis ci-dessous.
 
 RÈGLES IMPORTANTES:
-- Réponds uniquement avec les informations présentes dans les documents
-- Si l'information n'est pas dans les documents, dis clairement "Je ne trouve pas cette information dans la documentation accessible"
-- Cite les sources (titre du document) quand tu réponds
-- Sois précis et concis
-- Utilise un ton professionnel mais convivial
+- Réponds uniquement à partir des informations présentes dans les documents fournis.
+- Si une information ne figure pas dans les documents, indique clairement :
+ 👉 « Je ne trouve pas cette information dans la documentation accessible. »
+- Cite systématiquement tes sources à la fin de chaque réponse, entre parenthèses.
+- Format de citation :
+ (Source : « Titre exact du document », page X le cas échéant)
+- Ne fais jamais référence à un numéro de document, mais toujours au titre complet.
+- Sois précis, concise et adopte un ton professionnel, clair et convivial.
 
 DOCUMENTS DE RÉFÉRENCE:
 {context}
@@ -172,7 +175,8 @@ DOCUMENTS DE RÉFÉRENCE:
             title = doc.metadata.get('title', 'Document sans titre')
             content = doc.page_content
             
-            context_parts.append(f"[Document {i}: {title}]\n{content}\n")
+            # context_parts.append(f"[Document {i}: {title}]\n{content}\n")
+            context_parts.append(f"[{title}]\n{content}\n")
         
         return "\n".join(context_parts)
     
@@ -194,11 +198,16 @@ DOCUMENTS DE RÉFÉRENCE:
             
             # Éviter les doublons
             if title not in seen_titles:
+                profils = doc.metadata.get('profils_autorises', [])
+            
+            # Si c'est une chaîne, la convertir en liste
+            if isinstance(profils, str):
+                profils = [profils]
                 sources.append({
                     'title': title,
                     'filename': doc.metadata.get('filename', ''),
                     'description': doc.metadata.get('description', ''),
-                    'profils': doc.metadata.get('profils_autorises', [])
+                    'profils': profils
                 })
                 seen_titles.add(title)
         
@@ -207,7 +216,7 @@ DOCUMENTS DE RÉFÉRENCE:
 
 def main():
     """Fonction de test du moteur RAG"""
-    print("🤖 Test du moteur RAG IntraBot\n")
+    print("Test du moteur RAG IntraBot\n")
     
     rag = RAGEngine()
     
@@ -223,7 +232,7 @@ def main():
         },
         {
             'profile': 'RH',
-            'question': 'Comment déployer avec CI/CD ?'  # Devrait échouer
+            'question': 'Comment déployer avec CI/CD ?' 
         }
     ]
     
@@ -236,11 +245,13 @@ def main():
         
         result = rag.generate_answer(
             query=test['question'],
-            user_profile=test['profile']
+            user_profile=test['profile'],
+            return_sources=True
         )
         
+        
         print(f"Réponse:\n{result['answer']}\n")
-        print(f"Sources utilisées: {result['num_sources']}")
+        # print(f"Sources utilisées: {result.get('num_sources', 0)}")
         
         if result.get('sources'):
             print("\nDocuments consultés:")

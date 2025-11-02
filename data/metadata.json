@@ -29,6 +29,12 @@
       "title": "Charte Informatique de l'Entreprise",
       "profils_autorises": ["Technique", "RH", "Manager", "General"],
       "description": "Règles d'utilisation des ressources informatiques"
+    }, 
+    {
+      "filename": "contrat-engagement-16072024.pdf",
+      "title": "CONTRAT D'ENGAGEMENT À RESPECTER LES PRINCIPES DE LA RÉPUBLIQUE",
+      "profils_autorises": ["Technique", "RH", "Manager", "General"],
+      "description": "CONTRAT D'ENGAGEMENT À RESPECTER LES PRINCIPES DE LA RÉPUBLIQUE"
     }
   ]
 }

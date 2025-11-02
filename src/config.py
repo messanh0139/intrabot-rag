@@ -15,13 +15,13 @@ class Config:
     MISTRAL_API_KEY = os.getenv("MISTRAL_API_KEY")
     
     # ==================== MODÈLES ====================
-    LLM_MODEL = "mistral-large-latest"  # Pour la génération de réponses
+    LLM_MODEL = "open-mistral-7b"  # Pour la génération de réponses
     EMBEDDING_MODEL = "mistral-embed"    # Pour les embeddings
     
     # ==================== PARAMÈTRES RAG ====================
-    CHUNK_SIZE = 1000                    # Taille des chunks de texte
+    CHUNK_SIZE = 2000                    # Taille des chunks de texte
     CHUNK_OVERLAP = 200                  # Chevauchement entre chunks
-    TOP_K_RESULTS = 4                    # Nombre de documents à récupérer
+    TOP_K_RESULTS = 6                    # Nombre de documents à récupérer
     
     # ==================== PARAMÈTRES LLM ====================
     TEMPERATURE = 0.3                    # Contrôle la créativité (0 = déterministe)

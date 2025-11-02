@@ -124,3 +124,17 @@ et ensuite faire faire la configuration de la clé API en tapant dans le termina
 cp .env.example .env
 echo "MISTRAL_API_KEY=votre_clé_ici" > .env 
 ```
+### Dockerisation 
+J'ai crée l'image de Dockerisation(le conteneur) sous le nom: intrabot:latest et vous 
+tapez dans le terminal sous 
+
+```bash 
+docker build -t intrabot:latest .
+```
+En suite dans le terminal tapez: 
+
+```bash
+docker run -p 8501:8501 intrabot:latest
+```
+Pour afficher l'intrabot avec Docker.
+Voici le lien de l'application avec Docker, URL: http://0.0.0.0:8501

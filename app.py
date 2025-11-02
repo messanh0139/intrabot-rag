@@ -18,7 +18,7 @@ st.set_page_config(
     layout="wide"
 )
 
-# CSS personnalisé
+# CSS personnalisé CORRIGÉ
 st.markdown("""
 <style>
     .main-header {
@@ -39,27 +39,40 @@ st.markdown("""
     }
     .source-card {
         background-color: #f0f2f6;
-        color: #1a1a1a;
         padding: 1rem;
         border-radius: 10px;
         margin: 0.5rem 0;
         border-left: 4px solid #1f77b4;
     }
-    .source-card * {
-        color: #1a1a1a;
+    .source-card strong {
+        color: #1f77b4;
+        font-size: 1.1em;
+    }
+    .source-card small {
+        color: #555555;
+    }
+    .source-card em {
+        color: #666666;
     }
     .chat-message {
         padding: 1rem;
         border-radius: 10px;
         margin: 1rem 0;
+        color: #000000;
     }
     .user-message {
-        background-color: #d0e7ff;
-        color: #0d47a1;
+        background-color: #e3f2fd;
+        border-left: 4px solid #2196f3;
+    }
+    .user-message strong {
+        color: #1565c0;
     }
     .bot-message {
-        background-color: #f0f0f0;
-        color: #333333;
+        background-color: #f5f5f5;
+        border-left: 4px solid #4caf50;
+    }
+    .bot-message strong {
+        color: #2e7d32;
     }
 </style>
 """, unsafe_allow_html=True)
@@ -133,14 +146,10 @@ def sidebar_setup():
             st.session_state.current_profile = profile
             st.session_state.chat_history = []
         
-        st.markdown(f'<div class="profile-badge">Connecté en tant que: {profile}</div>', 
+        st.markdown(f'<div class="profile-badge">Connecté: {profile}</div>', 
                     unsafe_allow_html=True)
         
         st.divider()
-        
-        # Statistiques
-        st.header("📊 Statistiques")
-        st.metric("Messages", len(st.session_state.chat_history))
         
         if st.button("🗑️ Effacer l'historique", use_container_width=True):
             st.session_state.chat_history = []
@@ -161,33 +170,41 @@ def display_chat_history():
         timestamp = message.get('timestamp', '')
         
         if message['role'] == 'user':
-            st.markdown(f"""
-            <div class="chat-message user-message">
-                <strong>👤 Vous ({message['profile']})</strong> <small>{timestamp}</small><br/>
-                {message['content']}
-            </div>
-            """, unsafe_allow_html=True)
+            with st.container():
+                st.markdown(f"""
+                <div class="chat-message user-message">
+                    <strong>👤 Vous ({message['profile']})</strong> <small>{timestamp}</small><br/>
+                    <div style="color: #000000; margin-top: 0.5rem;">{message['content']}</div>
+                </div>
+                """, unsafe_allow_html=True)
         else:
-            st.markdown(f"""
-            <div class="chat-message bot-message">
-                <strong>🤖 IntraBot</strong> <small>{timestamp}</small><br/>
-                {message['content']}
-            </div>
-            """, unsafe_allow_html=True)
-            
-            # Afficher les sources si disponibles
-            if message.get('sources'):
-                with st.expander(f"📄 Sources utilisées ({len(message['sources'])})"):
-                    for source in message['sources']:
-                        st.markdown(f"""
-                        <div class="source-card">
-                            <strong>{source['title']}</strong><br/>
-                            <small>Fichier: {source['filename']}</small><br/>
-                            <small>Profils autorisés: {', '.join(source['profils'])}</small><br/>
-                            <em>{source['description']}</em>
-                        </div>
-                        """, unsafe_allow_html=True)
-
+            with st.container():
+                st.markdown(f"""
+                <div class="chat-message bot-message">
+                    <strong>🤖 IntraBot</strong> <small>{timestamp}</small><br/>
+                    <div style="color: #000000; margin-top: 0.5rem;">{message['content']}</div>
+                </div>
+                """, unsafe_allow_html=True)
+                
+                # Afficher les sources si disponibles
+                if message.get('sources'):
+                    with st.expander(f"📄 Sources utilisées ({len(message['sources'])})"):
+                        for source in message['sources']:
+                            # Vérifier que c'est bien une liste
+                            profils = source.get('profils', [])
+                            if isinstance(profils, list):
+                                profils_str = ', '.join(profils)
+                            else:
+                                profils_str = str(profils)
+                            
+                            st.markdown(f"""
+                            <div class="source-card">
+                                <strong>📄 {source.get('title', 'Sans titre')}</strong><br/>
+                                <small>📁 Fichier: {source.get('filename', 'N/A')}</small><br/>
+                                <small>👥 Profils autorisés: {profils_str}</small><br/>
+                                <em>📝 {source.get('description', '')}</em>
+                            </div>
+                            """, unsafe_allow_html=True)
 
 def main():
     """Fonction principale de l'application"""
