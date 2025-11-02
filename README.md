@@ -25,7 +25,7 @@ IntraBot est un assistant conversationnel qui répond aux questions des utilisat
 | **Base Vectorielle** | ChromaDB | Stockage et recherche vectorielle |
 | **Interface** | Streamlit | Interface utilisateur web |
 | **Conteneurisation** | Docker | Déploiement standardisé |
-| **Cloud** | Google Cloud Run | Hébergement scalable |
+| **Cloud** | share.streamlit.io | Hébergement scalable |
 
 ### Schéma d'Architecture
 
@@ -138,3 +138,7 @@ docker run -p 8501:8501 intrabot:latest
 ```
 Pour afficher l'intrabot avec Docker.
 Voici le lien de l'application avec Docker, URL: http://0.0.0.0:8501
+
+### Déploiement 
+Le déploiement à été fait sur le cloud de Streamlit et voici le lien 
+https://intrabot-rag-422jdqhxyubudqhncpprro.streamlit.app/
